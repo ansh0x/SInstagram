@@ -1,0 +1,11 @@
+:root {
+    --mauve: #dabfffff;
+    --tropical-indigo: #907ad6ff;
+    --ultra-violet: #4f518cff;
+    --space-cadet: #2c2a4aff;
+    --pale-azure: #7fdeffff;
+}
+
+body {
+    background-color: aquamarine;
+}
