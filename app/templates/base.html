@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock title %} - SInstagram</title>
+</head>
+<body>
+    <aside>
+        <img src="{{ url_for('static', filename='assets/dark-icon.png') }}" alt="logo" class="logo">
+        <ul>
+            <li><a href="/"><i class='bx bx-home-alt'></i></a></li>
+            <li><a href="/dashboard"><i class='bx bxs-dashboard'></i></a></li>
+            <li><a href="/upload"><i class='bx bx-upload'></i></a></li>
+        </ul>
+    </aside>
+    {% block body %}
+        
+    {% endblock body %}
+</body>
+</html>

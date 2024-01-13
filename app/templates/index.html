@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SInstagram</title>
-</head>
-<body>
-    <h2>WelCome!!!!!!!!!!</h2>
-    {% if not current_user.username %}
-    <a href="/signup">SignUp</a>
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+{% if not current_user.username %}
+<a href="/signup">SignUp</a>
     <a href="/login">Login</a>
-    {% else %}
-        <a href="/logout">logout</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/upload">Upload Post</a>
-    {% endif %}
     <div class="alert">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -24,5 +16,23 @@
         {% endif %}
         {% endwith %}
     </div>
-</body>
-</html>
+    {% else %}
+    <section class="posts">
+        {% for post in posts %}
+        <div class="post-card">
+            <div class="card-header">
+                <img src="" alt="pp">
+                <span>{{post.user.username}}</span>
+            </div>
+            <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="posrs">
+            <div class="post-logistics">
+                <ul class="actions">
+                    <li><i class='bx bx-heart'></i></li>
+                    <li><i class='bx bx-message'></i></li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+{% endblock body %}

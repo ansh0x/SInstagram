@@ -11,7 +11,9 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
 
-    return render_template('index.html')
+    posts = Posts.query.all()
+    
+    return render_template('index.html', posts=posts)
 
 @main.route('/dashboard', methods=["POST", "GET"])
 @login_required

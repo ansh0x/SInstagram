@@ -6,6 +6,99 @@
     --pale-azure: #7fdeffff;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: aquamarine;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: #f8f8f8;
+    gap: .25rem;
+}
+
+/* ASIDE CONTROL PANEL STYLES */
+
+aside {
+    width: 4vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--tropical-indigo);
+
+}
+
+aside .logo{
+    width: 150%;    
+    height: auto;
+    object-fit: contain;    
+    mix-blend-mode: color-burn;
+}
+
+aside ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+aside li {
+    margin-bottom: 15px;
+    padding: 5px;
+    transition: all .2s ease-in-out;
+}
+
+aside a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+aside li:hover {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.192);
+    cursor: pointer;
+}
+
+/* STYLES FOR SHOWING POSTS */
+
+.posts {
+    width: 60%;
+    height: 100%;
+    overflow-y: scroll;
+    border: .75px solid #333;
+    background-color: rgba(218, 191, 255, 0.582);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header{
+    background-color: var(--space-cadet);
+    color: whitesmoke;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.75rem;
+}
+
+.card-header img{
+    max-width: 75px;
+    max-height: 75px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+}
+
+.post-card img {
+    max-width: 720px;
+    object-fit: contain;
+    align-self: center;
 }
