@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 :root {
-    --mauve: #dabfffff;
-    --tropical-indigo: #907ad6ff;
-    --ultra-violet: #4f518cff;
-    --space-cadet: #2c2a4aff;
-    --pale-azure: #7fdeffff;
+    --rich-black: #0d1b2aff;
+    --yinmn-blue: #415a77ff;
+    --platinum: #e0e1ddff;
+
+    --font: 'Roboto', sans-serif;
 }
 
 * {
@@ -16,30 +18,33 @@ body {
     height: 100vh;
     width: 100vw;
     display: flex;
-    background-color: #f8f8f8;
-    gap: .25rem;
+    gap: 1rem;
+    background-color: var(--platinum);
+    font-family: var(--font);
 }
 
 /* ASIDE CONTROL PANEL STYLES */
 
 aside {
-    width: 4vw;
+    /* flex-grow: 1; */
+    width: 18vw;
     height: 100%;
     display: flex;
+    background-color: var(--rich-black);
+    color: white;
     flex-direction: column;
     align-items: center;
-    background-color: var(--tropical-indigo);
-
 }
 
-aside .logo{
-    width: 150%;    
-    height: auto;
-    object-fit: contain;    
-    mix-blend-mode: color-burn;
+aside .logo {
+    width: 50%;
+    margin-top: 0;
+    object-fit: contain; 
 }
 
-aside ul{
+aside ul {
+    width: 90%;
+
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -48,47 +53,68 @@ aside ul{
 aside li {
     margin-bottom: 15px;
     padding: 5px;
+    line-height: 1.75em;
     transition: all .2s ease-in-out;
 }
 
 aside a {
-    color: black;
+    text-decoration: none;
+    color: whitesmoke;
+    word-spacing: 0.75em;
+    font-size: 1.25rem;
+}
+
+aside i {
     font-size: 1.5rem;
+    transition: all .2s ease-in-out;
 }
 
 aside li:hover {
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.192);
+    background-color: rgba(0, 0, 0, 0.315);
     cursor: pointer;
+}
+
+aside li:hover i {
+    transform: scale(1.1);
 }
 
 /* STYLES FOR SHOWING POSTS */
 
 .posts {
-    width: 60%;
-    height: 100%;
+    padding: 12px;
+    flex-grow: 1;
+    align-self: flex-end;
+    margin-bottom: 5px;
+    height: 90%;
     overflow-y: scroll;
-    border: .75px solid #333;
-    background-color: rgba(218, 191, 255, 0.582);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .post-card {
-    width: 100%;
+    width: 90%;
+    padding: 6px;
+
     display: flex;
     flex-direction: column;
+    gap: 18px;
+
+    color: #000;
+    background-color: var(--ultra-violet);
+
+
+    box-shadow: 0 0 10px 1px #5f5f5f;
 }
 
-.card-header{
-    background-color: var(--space-cadet);
-    color: whitesmoke;
-    font-family: 'Times New Roman', Times, serif;
+.post-detail {
+    width: 100%;
     line-height: 1.75rem;
+    display: grid;
 }
 
-.card-header img{
+.post-detail img {
     max-width: 75px;
     max-height: 75px;
     object-fit: contain;
@@ -97,8 +123,25 @@ aside li:hover {
     color: black;
 }
 
+.post-detail .caption {
+    justify-self: start;
+}
+
+.post-detail ul {
+    justify-self: end;
+    align-self: self-end;
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
 .post-card img {
-    max-width: 720px;
-    object-fit: contain;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0;
     align-self: center;
+}
+
+.message {
+    flex-grow: 1;
 }

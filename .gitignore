@@ -3,4 +3,4 @@ f.py
 instance/
 env/
 __pycache__/
-
+migrations/

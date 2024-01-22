@@ -9,11 +9,12 @@
 </head>
 <body>
     <aside>
-        <img src="{{ url_for('static', filename='assets/dark-icon.png') }}" alt="logo" class="logo">
+        <img src="{{ url_for('static', filename='assets/light-logo.png') }}" alt="logo" class="logo">
         <ul>
-            <li><a href="/"><i class='bx bx-home-alt'></i></a></li>
-            <li><a href="/dashboard"><i class='bx bxs-dashboard'></i></a></li>
-            <li><a href="/upload"><i class='bx bx-upload'></i></a></li>
+            <li><a href="/"><i class='bx bx-home-alt'></i> Home</a></li>
+            <li><a href="/dashboard"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+            <li><a href="/upload"><i class='bx bx-upload'></i> Upload</a></li>
+            <li><a href="/logout"><i class='bx bx-log-out'></i> Log-Out</a></li>
         </ul>
     </aside>
     {% block body %}

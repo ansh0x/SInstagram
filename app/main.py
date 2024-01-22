@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from .models import *
-from . import allowed_file, app
 import os
 
 main = Blueprint('main', __name__)

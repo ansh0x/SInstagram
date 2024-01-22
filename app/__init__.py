@@ -23,6 +23,3 @@ def create_app():
 
     return app
 
-#  Function to check accepted file types
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
