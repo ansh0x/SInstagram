@@ -3,29 +3,17 @@
 {% block title %}Home{% endblock title %}
 
 {% block body %}
-
-{% if not current_user.username %}
-<a href="/signup">SignUp</a>
-<a href="/login">Login</a>
-<div class="alert">
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <li>{{message}}</li>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-</div>
-{% else %}
+<p>{{ current_user.username }}</p>
 <section class="posts">
     {% for post in posts %}
     <div class="post-card">
-        <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="posrs">
+        <div class="username">
+            <img src="" alt="pp">
+            <span>{{post.user.username}}</span>
+        </div>
+        <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="post" class="post-img">
         <div class="post-detail">
-            <div class="username">
-                <img src="" alt="pp">
-                <span>{{post.user.username}}</span>
-            </div>
+            
             <span class="caption">
                 This is the post caption 
                 lorem*       
@@ -39,5 +27,4 @@
     {% endfor %}
 </section>
 <section class="message"></section>
-{% endif %}
 {% endblock body %}

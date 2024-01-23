@@ -26,8 +26,9 @@ body {
 /* ASIDE CONTROL PANEL STYLES */
 
 aside {
-    /* flex-grow: 1; */
-    width: 18vw;
+    flex-grow: 1;
+    min-width: 18vw;
+    max-width: 18vw;
     height: 100%;
     display: flex;
     background-color: var(--rich-black);
@@ -86,15 +87,19 @@ aside li:hover i {
     flex-grow: 1;
     align-self: flex-end;
     margin-bottom: 5px;
-    height: 90%;
+    height: 100%;
+    width: 40%;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    gap: 12px;
     align-items: center;
+    /* background-color: red; */
 }
 
 .post-card {
-    width: 90%;
+    width: 70%;
+    height: 100%;
     padding: 6px;
 
     display: flex;
@@ -109,7 +114,9 @@ aside li:hover i {
 }
 
 .post-detail {
+    flex-grow: 1;
     width: 100%;
+    /* height: 40%; */
     line-height: 1.75rem;
     display: grid;
 }
@@ -135,10 +142,11 @@ aside li:hover i {
     gap: 20px;
 }
 
-.post-card img {
+.post-img {
+    flex-grow: 3;
     width: 100%;
-    object-fit: cover;
-    object-position: 0;
+    max-height: 80%;
+    object-fit: contain;
     align-self: center;
 }
 

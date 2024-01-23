@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, flash, redirect, request, url_for
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from datetime import datetime
+from random import shuffle
+
 from .models import *
 import os
 
@@ -10,9 +12,16 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
 
-    posts = Posts.query.all()
-    
-    return render_template('index.html', posts=posts)
+    if current_user.is_authenticated:
+        posts = Posts.query.all()
+        shuffle(posts)
+        print(posts)
+        # print(posts_)
+
+        return render_template('index.html', posts=posts)
+
+    else:
+        return redirect('/login')
 
 @main.route('/dashboard', methods=["POST", "GET"])
 @login_required
@@ -25,7 +34,6 @@ def dashboard():
 @main.route('/upload', methods=['POST', 'GET'])
 @login_required
 def upload_post():
-    count = 1
     if request.method == 'POST':
 
         file = request.files['image']
@@ -40,7 +48,6 @@ def upload_post():
         db.session.add(post)
         db.session.commit()
 
-        flash('Post uploade')
         return redirect('/')
 
     return render_template('upload.html')

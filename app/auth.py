@@ -48,7 +48,6 @@ def login():
         if user: # if user exists then validating the password and logging-In the user
             if check_password_hash(user.password, password):
                 login_user(user, remember=False)
-                flash('Login Successful!!')
                 return redirect('/')
 
             else: # if password is wrong then asking to retry 
@@ -67,7 +66,6 @@ def login():
 def logut():
     logout_user()
     
-    flash('Logut')
     return redirect('/')
 
 @login_maneger.user_loader
