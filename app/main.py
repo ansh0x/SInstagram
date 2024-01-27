@@ -15,8 +15,6 @@ def home():
     if current_user.is_authenticated:
         posts = Posts.query.all()
         shuffle(posts)
-        print(posts)
-        # print(posts_)
 
         return render_template('index.html', posts=posts)
 
@@ -51,3 +49,4 @@ def upload_post():
         return redirect('/')
 
     return render_template('upload.html')
+

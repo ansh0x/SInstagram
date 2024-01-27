@@ -3,7 +3,6 @@
 {% block title %}Home{% endblock title %}
 
 {% block body %}
-<p>{{ current_user.username }}</p>
 <section class="posts">
     {% for post in posts %}
     <div class="post-card">
@@ -13,18 +12,32 @@
         </div>
         <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="post" class="post-img">
         <div class="post-detail">
-            
+
             <span class="caption">
-                This is the post caption 
-                lorem*       
+                This is the post caption
+                lorem*
             </span>
             <ul class="actions">
-                <li><i class='bx bx-heart'></i></li>
+                {% if current_user in post.likes %}
+                <li>
+                    <i class='bx bxs-heart active-like' id="like-btn"
+                        onclick="likePost('{{ post.id }}')"></i>
+                    <p id="like-count-{{ post.id }}">{{ post.total_likes() }}</p>
+                </li>
+                {% else %}
+                <li>
+                    <i class='bx bx-heart' id="like-btn" onclick="likePost('{{ post.id }}')">
+                    <p id="like-count-{{ post.id }}">{{ post.total_likes() }}</p></i>
+                </li>
+                {% endif %}
                 <li><i class='bx bx-message'></i></li>
             </ul>
         </div>
+
     </div>
     {% endfor %}
 </section>
 <section class="message"></section>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock body %}

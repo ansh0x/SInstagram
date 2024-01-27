@@ -70,4 +70,4 @@ def logut():
 
 @login_maneger.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.filter_by(id=user_id).first()

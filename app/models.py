@@ -1,6 +1,10 @@
 from flask_login import UserMixin
 from .extensions import db
 
+likes = db.Table('likes',
+        db.Column('user_id', db.Integer, db.ForeignKey('user.id')),                 
+        db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))                 
+)
 
 class User(db.Model, UserMixin):
     # __tablename__ = 'users'
@@ -26,7 +30,12 @@ class Posts(db.Model):
     post_name = db.Column(db.String, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    likes = db.relationship('User', secondary=likes, backref='liked_posts')
     comments = db.relationship('Comments', backref='post', lazy=True)
+
+    def total_likes(self):
+        return len(self.likes)
 
 class Comments(db.Model):
     

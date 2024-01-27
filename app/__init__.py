@@ -17,6 +17,9 @@ def create_app():
     from .main import main
     app.register_blueprint(main) # Impoting other genral views
 
+    from .actions import action
+    app.register_blueprint(action)
+
     db.init_app(app)
     login_maneger.init_app(app)
     migrate.init_app(app=app, db=db)
