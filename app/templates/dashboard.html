@@ -6,6 +6,8 @@
     
 {% for post in posts %}
 <img src="{{upload_path}}{{post.post_name}}" alt="{{post.post_name}}">
+<button onclick="deletePost('{{ post.id }}')">Delete</button>
 {% endfor %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 {% endblock body %}

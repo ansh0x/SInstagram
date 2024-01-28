@@ -59,8 +59,10 @@ aside li {
 }
 
 aside a {
+    width: 100%;
     text-decoration: none;
     color: whitesmoke;
+    display: inline-block;
     word-spacing: 0.75em;
     font-size: 1.25rem;
 }
@@ -152,28 +154,56 @@ aside li:hover i {
     max-height: 80%;
     object-fit: contain;
     align-self: center;
+    background-color: blue;
+}
+
+.post-img:hover {
+    cursor: pointer;
 }
 
 .message {
     flex-grow: 1;
 }
 
-.bxs-heart {
+.active-like {
     color: red;
 }
 
-#like-btn {
+.like {
     /* line-height: 50px; */
     transition: all 0.2s ease-in-out;
     /* background-color: blue; */
 }
 
-#like-btn:hover {
+.like:hover {
     cursor: pointer;
     color: red;
     font-size: 1.15rem;
 }
 
-#like-count-1 {
-    /* background-color: green; */
+
+.post-overlay {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: var(--rich-black);
+    opacity: .5;
+    display: none;
+    z-index: 999;
+}
+
+.popUp-post {
+    position: absolute;
+    width: 70%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* transform: translate(-50%); */
+    background-color: var(--yinmn-blue);
+    display: none;
+    z-index: 1000;
 }

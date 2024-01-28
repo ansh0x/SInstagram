@@ -28,6 +28,7 @@ class Posts(db.Model):
     # __bind_key__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     post_name = db.Column(db.String, nullable=False)
+    caption = db.Column(db.Text)
     date_created = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
@@ -36,6 +37,9 @@ class Posts(db.Model):
 
     def total_likes(self):
         return len(self.likes)
+
+    def total_comments(self):
+        return len(self.comments)
 
 class Comments(db.Model):
     

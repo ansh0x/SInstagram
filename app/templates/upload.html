@@ -4,8 +4,9 @@
 
 {% block body %}
     
-<form action="/upload" method="post" enctype="multipart/form-data">
+<form action="{{ url_for('routes.views.upload_post') }}" method="post" enctype="multipart/form-data">
     <input type="file" name="image">
+    <input type="text" placeholder="Caption" name="caption">
     <input type="submit" value="upload"> 
     <!-- <button type="submit">Upload</button> -->
 </form>

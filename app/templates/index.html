@@ -10,31 +10,40 @@
             <img src="" alt="pp">
             <span>{{post.user.username}}</span>
         </div>
-        <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="post" class="post-img">
+        <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="post" class="post-img"
+            onclick="fullPost('{{ post.id }}')">
         <div class="post-detail">
 
             <span class="caption">
-                This is the post caption
-                lorem*
+                {{ post.caption }}
             </span>
             <ul class="actions">
                 {% if current_user in post.likes %}
                 <li>
-                    <i class='bx bxs-heart active-like' id="like-btn"
+                    <i class='bx bxs-heart active-like' id="like-btn-{{ post.id }}"
                         onclick="likePost('{{ post.id }}')"></i>
                     <p id="like-count-{{ post.id }}">{{ post.total_likes() }}</p>
                 </li>
                 {% else %}
                 <li>
-                    <i class='bx bx-heart' id="like-btn" onclick="likePost('{{ post.id }}')">
-                    <p id="like-count-{{ post.id }}">{{ post.total_likes() }}</p></i>
+                    <i class='bx bx-heart like' id="like-btn-{{ post.id }}" onclick="likePost('{{ post.id }}')"></i>
+                    <p id="like-count-{{ post.id }}">{{ post.total_likes() }}</p>
                 </li>
                 {% endif %}
-                <li><i class='bx bx-message'></i></li>
+                <li><i class='bx bx-message like'></i>
+                    <p id="cmnts-count-{{ post.id }}">{{ post.total_comments() }}</p>
+                </li>
             </ul>
         </div>
+        <div class="popUp-post" id="popUp-post-{{ post.id }}">
 
+            <button onclick="closePopUp('{{ post.id }}')">X</button>
+            <img src="{{ url_for('static', filename='uploads/'+post.post_name) }}" alt="post" class="post-img">
+
+            <!-- <div class="post-content"></div> -->
+        </div>
     </div>
+    <div class="post-overlay" id="post-overlay-{{ post.id }}"></div>
     {% endfor %}
 </section>
 <section class="message"></section>

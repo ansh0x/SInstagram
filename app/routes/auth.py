@@ -1,14 +1,14 @@
-from flask import Blueprint, render_template, redirect, request, flash
+from flask import Blueprint, render_template, redirect, request, flash, url_for
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User
-from .extensions import login_maneger
-from . import db
+from app.models import User
+from app.extensions import login_maneger
+from app.extensions import db
 
 auth = Blueprint('auth',  __name__)
 
 @auth.route('/signup', methods=['POST', 'GET'])
-def signup_post():
+def signup():
 
     if request.method == 'POST':
         # Getting data entered by user in the SignUp form
@@ -21,7 +21,7 @@ def signup_post():
 
         if user: # if a user is found, we want to redirect back to signup page so user can try again
             flash('User already exist with the given email, try another email or login with the entered email')
-            return redirect('/signup')
+            return redirect(url_for('routes.auth.signup'))
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         else : 
@@ -32,7 +32,7 @@ def signup_post():
             db.session.commit()
 
             flash('User added successfully. Now you can login')
-            return redirect('/')
+            return redirect(url_for('routes.views.home'))
 
     return render_template('auth/signup.html')
 
@@ -48,25 +48,25 @@ def login():
         if user: # if user exists then validating the password and logging-In the user
             if check_password_hash(user.password, password):
                 login_user(user, remember=False)
-                return redirect('/')
+                return redirect(url_for('routes.views.home'))
 
             else: # if password is wrong then asking to retry 
                 flash('Wrong Password. Please try again')
-                return redirect('/login')
+                return redirect(url_for('routes.auth.login'))
 
         else: 
             flash('User Not Found')
-            return redirect('/login')
+            return redirect(url_for('routes.auth.signup'))
     
     return render_template('auth/login.html')
 
 # Loggin-Out the user
 @auth.route('/logout')
 @login_required
-def logut():
+def logout():
     logout_user()
     
-    return redirect('/')
+    return redirect(url_for('routes.auth.login'))
 
 @login_maneger.user_loader
 def load_user(user_id):

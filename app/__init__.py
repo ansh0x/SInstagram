@@ -11,14 +11,8 @@ def create_app():
     app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 
 
-    from .auth import auth # Impoting Authenticaton views
-    app.register_blueprint(auth)
-
-    from .main import main
-    app.register_blueprint(main) # Impoting other genral views
-
-    from .actions import action
-    app.register_blueprint(action)
+    from .routes import routes
+    app.register_blueprint(routes)
 
     db.init_app(app)
     login_maneger.init_app(app)

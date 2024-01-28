@@ -1,15 +1,15 @@
-from flask import Blueprint, render_template, flash, redirect, request, url_for
+from flask import Blueprint, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from random import shuffle
 
-from .models import *
+from app.models import *
 import os
 
-main = Blueprint('main', __name__)
+views = Blueprint('views', __name__)
 
-@main.route('/')
+@views.route('/')
 def home():
 
     if current_user.is_authenticated:
@@ -19,9 +19,9 @@ def home():
         return render_template('index.html', posts=posts)
 
     else:
-        return redirect('/login')
+        return redirect(url_for('routes.auth.login'))
 
-@main.route('/dashboard', methods=["POST", "GET"])
+@views.route('/dashboard', methods=["POST", "GET"])
 @login_required
 def dashboard():
 
@@ -29,12 +29,13 @@ def dashboard():
 
     return render_template('dashboard.html', posts=posts, upload_path='static/uploads/')
 
-@main.route('/upload', methods=['POST', 'GET'])
+@views.route('/upload', methods=['POST', 'GET'])
 @login_required
 def upload_post():
     if request.method == 'POST':
 
         file = request.files['image']
+        caption = request.form.get('caption')
         date_created = datetime.now()
         filename = secure_filename(f"{current_user.id}_{str(date_created.date()).replace('-','')}_{date_created.second}.png")
         file_url = os.path.join('./app/static/uploads', filename)
@@ -42,11 +43,11 @@ def upload_post():
         print(file_url)
         file.save(file_url)
 
-        post = Posts(post_name=filename, date_created=date_created,user=current_user)
+        post = Posts(post_name=filename, caption=caption,date_created=date_created,user=current_user)
         db.session.add(post)
         db.session.commit()
 
-        return redirect('/')
+        return redirect(url_for('routes.views.home'))
 
     return render_template('upload.html')
 
