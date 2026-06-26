@@ -2,12 +2,12 @@
 
 A lightweight, full-stack social media web application inspired by Instagram, built with **Flask** and **SQLAlchemy**. Users can sign up, share photos, like posts, and manage their personal dashboard.
 
-&lt;p align="center"&gt;
-  &lt;img src="https://img.shields.io/badge/Flask-3.0.0-black?style=flat&logo=flask" /&gt;
-  &lt;img src="https://img.shields.io/badge/SQLAlchemy-2.0.23-red?style=flat" /&gt;
-  &lt;img src="https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python" /&gt;
-  &lt;img src="https://img.shields.io/badge/License-MIT-green?style=flat" /&gt;
-&lt;/p&gt;
+<p align="center">
+  <img src="https://img.shields.io/badge/Flask-3.0.0-black?style=flat&logo=flask" />
+  <img src="https://img.shields.io/badge/SQLAlchemy-2.0.23-red?style=flat" />
+  <img src="https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat" />
+</p>
 
 ---
 
