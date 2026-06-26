@@ -23,23 +23,6 @@ A lightweight, full-stack social media web application inspired by Instagram, bu
 
 ---
 
-## 🏗️ Architecture
-SInstagram/
-├── app/
-│   ├── init.py          # App factory (SQLite, LoginManager, Migrate)
-│   ├── extensions.py        # Shared extensions (db, login_manager, migrate)
-│   ├── models.py            # User, Posts, Comments, Follower ORM models
-│   ├── routes/
-│   │   ├── auth.py          # Signup, Login, Logout
-│   │   ├── views.py         # Home feed, Dashboard, Upload
-│   │   └── actions.py       # Like, Delete (AJAX endpoints)
-│   ├── templates/           # Jinja2 HTML templates
-│   └── static/              # CSS, JS, uploads
-├── requirement.txt
-└── README.md
-
----
-
 ## 🚀 Quick Start
 
 ```bash
