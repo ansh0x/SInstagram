@@ -55,6 +55,6 @@ flask run
 | `Follower` | `id`, `follower_id`, `following_id`           | Self-referential many-to-many                    |
 ## 🛡️ Security Considerations
 
-    Passwords hashed with Werkzeug (generate_password_hash)
-    Upload filenames sanitized with secure_filename
-    Session protected by Flask-Login
+- Passwords hashed with Werkzeug (generate_password_hash)
+- Upload filenames sanitized with secure_filename
+- Session protected by Flask-Login
